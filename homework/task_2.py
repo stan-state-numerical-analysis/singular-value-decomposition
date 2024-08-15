@@ -53,7 +53,7 @@
 
 
 
-# 8. Uncomment the code belo to display the compressed images.
+# 8. Uncomment the code below to display the compressed images.
 
 # def plot_svd_comparison(
 #     img_1,

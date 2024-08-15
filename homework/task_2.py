@@ -5,8 +5,8 @@
 
 
 
-# 2. Load and display the original image. Use Image.open and convert the image
-# to grayscale. Call the output image.
+# 2. Load and display the original PNG image included in this folder. Use Image.open
+# and convert the image to grayscale. Call the output image.
 
 
 

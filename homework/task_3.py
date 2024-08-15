@@ -157,4 +157,3 @@
 
 
 # plot_data_3D(X_standardized, X_reduced_3, y)
-# plt.show()

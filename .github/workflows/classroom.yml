@@ -1,0 +1,53 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+- workflow_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Python Test Setup
+      id: python-test-setup
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Python Test Setup
+        setup-command: apt-get update; apt-get install -y wget; pip install pytest; pip install pytest-mpl; pip install scikit-learn;
+          wget https://raw.githubusercontent.com/jessicadesilva/test-repo/main/tests_9/test_task_1.py
+          -O ./homework/test_task_1.py;
+          wget https://raw.githubusercontent.com/jessicadesilva/test-repo/main/tests_9/test_task_2.py
+          -O ./homework/test_task_2.py;
+          wget https://raw.githubusercontent.com/jessicadesilva/test-repo/main/tests_9/test_task_3.py
+          -O ./homework/test_task_3.py;
+          wget https://raw.githubusercontent.com/jessicadesilva/test-repo/main/tests_9/test_plot_svd_comparison.png
+          -O ./homework/test_plot_svd_comparison.png;
+          wget https://raw.githubusercontent.com/jessicadesilva/test-repo/main/tests_9/test_plot_data_2D.png
+          -O ./homework/test_plot_data_2D.png;
+          wget https://raw.githubusercontent.com/jessicadesilva/test-repo/main/tests_9/test_plot_data_3D.png
+          -O ./homework/test_plot_data_3D.png
+        command: echo "Setup complete."
+        timeout: 10
+        max-score: 1
+    - name: Python Tests
+      id: python-tests
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Python Tests
+        setup-command: 
+        command: cd homework; python -m pytest --mpl --mpl-baseline-path=./ --tb=native -v
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        PYTHON-TEST-SETUP_RESULTS: "${{steps.python-test-setup.outputs.result}}"
+        PYTHON-TESTS_RESULTS: "${{steps.python-tests.outputs.result}}"
+      with:
+        runners: python-test-setup,python-tests

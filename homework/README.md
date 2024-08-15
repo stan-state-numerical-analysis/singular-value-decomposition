@@ -8,7 +8,7 @@ homework/
 ├── README.md
 ├── __init__.py
 ├── homework_scratch.ipynb
-├── test_image.png
+├── image.png
 ├── task_1.py
 ├── task_2.py
 └── task_3.py

@@ -55,36 +55,50 @@
 
 # 8. Uncomment the code belo to display the compressed images.
 
-# plt.figure(figsize=(12, 4))
+# def plot_svd_comparison(
+#     img_1,
+#     img_2,
+#     img_3,
+#     img_4,
+#     img_5,
+#     original_image,
+# ):
+#     fig, axes = plt.subplots(2, 3, figsize=(12, 8))  # Create a 2x3 grid of subplots
 
-# plt.subplot(2, 3, 1)
-# plt.imshow(compressed_image_5, cmap="gray")
-# plt.title("Compressed Image\n(5 SVs)")
-# plt.axis("off")
+#     # Plot the compressed images with varying numbers of singular values
+#     axes[0, 0].imshow(img_1, cmap="gray")
+#     axes[0, 0].set_title("Compressed Image\n(5 SVs)")
+#     axes[0, 0].axis("off")
 
-# plt.subplot(2, 3, 2)
-# plt.imshow(compressed_image_10, cmap="gray")
-# plt.title("Compressed Image\n(10 SVs)")
-# plt.axis("off")
+#     axes[0, 1].imshow(img_2, cmap="gray")
+#     axes[0, 1].set_title("Compressed Image\n(10 SVs)")
+#     axes[0, 1].axis("off")
 
-# plt.subplot(2, 3, 3)
-# plt.imshow(compressed_image_30, cmap="gray")
-# plt.title("Compressed Image\n(30 SVS)")
-# plt.axis("off")
+#     axes[0, 2].imshow(img_3, cmap="gray")
+#     axes[0, 2].set_title("Compressed Image\n(30 SVs)")
+#     axes[0, 2].axis("off")
 
-# plt.subplot(2, 3, 4)
-# plt.imshow(compressed_image_50, cmap="gray")
-# plt.title("Compressed Image\n(50 SVs)")
-# plt.axis("off")
+#     axes[1, 0].imshow(img_4, cmap="gray")
+#     axes[1, 0].set_title("Compressed Image\n(50 SVs)")
+#     axes[1, 0].axis("off")
 
-# plt.subplot(2, 3, 5)
-# plt.imshow(compressed_image_100, cmap="gray")
-# plt.title("Compressed Image\n(100 SVs)")
-# plt.axis("off")
+#     axes[1, 1].imshow(img_5, cmap="gray")
+#     axes[1, 1].set_title("Compressed Image\n(100 SVs)")
+#     axes[1, 1].axis("off")
 
-# plt.subplot(2, 3, 6)
-# plt.imshow(image, cmap="gray")
-# plt.title("Original Image\n(1024 SVs)")
-# plt.axis("off")
+#     axes[1, 2].imshow(original_image, cmap="gray")
+#     axes[1, 2].set_title("Original Image\n(1024 SVs)")
+#     axes[1, 2].axis("off")
 
-# plt.show()
+#     plt.tight_layout()  # Adjust the layout to avoid overlap
+#     return fig
+
+
+# plot_svd_comparison(
+#     compressed_image_5,
+#     compressed_image_10,
+#     compressed_image_30,
+#     compressed_image_50,
+#     compressed_image_100,
+#     image,
+# )

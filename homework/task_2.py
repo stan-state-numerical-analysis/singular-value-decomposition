@@ -19,7 +19,7 @@
 
 
 
-# 4. Use numpy.linalg.svd to decompose the image matrix into U, S, and Vt
+# 5. Use numpy.linalg.svd to decompose the image matrix into U, S, and Vt
 # from its SVD.
 
 
